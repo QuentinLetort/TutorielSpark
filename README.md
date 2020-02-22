@@ -6,7 +6,8 @@ Il s'inscrit dans le cadre du cours [8INF853 - Architecture des applications d'e
 ## Présentation de Spark
 
 Apache Spark est un **framework open source** de **calcul distribué**.\
-Développé à l’université de Californie à Berkeley en 2014, Spark est aujourd’hui un projet de la fondation Apache.\ Il s'agit essentiellement d'un cadre applicatif de traitements **big data** pour effectuer des analyses complexes à grande échelle.\
+Développé à l’université de Californie à Berkeley en 2014, Spark est aujourd’hui un projet de la fondation Apache.\
+Il s'agit essentiellement d'un cadre applicatif de traitements **big data** pour effectuer des analyses complexes à grande échelle.\
 Spark permet d’optimiser l’utilisation d’un **cluster** pour des opérations d'analyses et permet ainsi de minimiser le temps requis pour obtenir les résultats.\
 Ce framework fournit plusieurs composants et librairies aux utilisateurs pour le traitement de données :
 TODO: Image
@@ -15,13 +16,13 @@ TODO: Image
 ### Contexte
 
 Pourquoi avons-nous besoin d’un nouveau **moteur de calcul** et d’un **modèle de programmation distribué** pour l’analyse de données ?\
-Comme plusieurs autres changements dans le monde celui-ci provient en partie de **raisons économiques** liées aux applications ainsi qu’au matériel informatique.\
+Comme plusieurs autres changements dans le monde celui-ci provient en partie de **raisons économiques** liées aux applications ainsi qu’au matériel informatique.
 
-Historiquement les processeurs des ordinateurs devenaient de plus en plus rapides d’année en année. Ainsi par défaut les applications construites sur ceux-ci devenaient également plus rapides. Ceci a mené a l’établissement d’un large écosystème d’applications conçues pour être exécutées principalement sur un seul processeur.\
+Historiquement les processeurs des ordinateurs devenaient de plus en plus rapides d’année en année. Ainsi par défaut les applications construites sur ceux-ci devenaient également plus rapides. Ceci a mené a l’établissement d’un large écosystème d’applications conçues pour être exécutées principalement sur un seul processeur.
 
 Cette tendance prit malheureusement fin vers 2005 en raison des limitations au niveau de la dissipation de chaleur liée à l’augmentation de cadence des processeurs. À partir de ce moment, les manufacturiers ont plutôt choisi d’ajouter plusieurs cœurs au processeur. Ceci a pour effets de modifier les patrons de création d’application pour utiliser un modèle à plusieurs processus.
 
-Durant ce même laps de temps, les technologies do stockage et d'acquisition de données n’ont pas subi la même pression que les processeurs. De ce fait, le coût de stockage et des technologies d’acquisition de données ont considérablement diminué (camera, capteur, IOT, etc.). Ceci a donc causé une explosion de la quantité de données disponibles prêtes à être analyser.\
+Durant ce même laps de temps, les technologies do stockage et d'acquisition de données n’ont pas subi la même pression que les processeurs. De ce fait, le coût de stockage et des technologies d’acquisition de données ont considérablement diminué (camera, capteur, IOT, etc.). Ceci a donc causé une explosion de la quantité de données disponibles prêtes à être analyser.
 
 Cette quantité astronomique de données à analyser a donc générer un nouveau besoin : celui d'une grande **plateforme de calculs distribués** telle que Spark.
 

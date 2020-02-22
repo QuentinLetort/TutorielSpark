@@ -9,6 +9,7 @@ Apache Spark est un **framework open source** de **calcul distribué**.\
 Développé à l’université de Californie à Berkeley en 2014, Spark est aujourd’hui un projet de la fondation Apache.\ Il s'agit essentiellement d'un cadre applicatif de traitements **big data** pour effectuer des analyses complexes à grande échelle.\
 Spark permet d’optimiser l’utilisation d’un **cluster** pour des opérations d'analyses et permet ainsi de minimiser le temps requis pour obtenir les résultats.\
 Ce framework fournit plusieurs composants et librairies aux utilisateurs pour le traitement de données :
+TODO: Image
 
 
 ### Contexte
@@ -137,8 +138,74 @@ Les 3 exemples suivants permettront de comprendre le fonctionnement de Spark et 
 #### Exemple 1 : Wordcount
 
 Ce premier exemple permet de vérifier que l'installation s'est bien déroulée et de prendre connaissance des notions fondamentales de Spark.
-Il est directement fourni comme exemple dans l'arborescence de spark: $SPARK_HOME/examples/src/main/python/wordcount.py avec un ensemble d'autres exemples. Vous pouvez également le retrouver dans le dossier code de ce tutoriel.
+Il est directement fourni comme exemple dans l'arborescence de spark: **$SPARK_HOME/examples/src/main/python/wordcount.py** avec un ensemble d'autres exemples. Vous pouvez également retrouver une version un peu modifiée dans le dossier code de ce tutoriel.
+```python
+import sys
+from operator import add
+from pyspark.sql import SparkSession
 
+if len(sys.argv) != 2:
+    print("Usage: wordcount <file>", file=sys.stderr)
+    sys.exit(-1)
+
+# Récupération d'une SparkSession
+spark = SparkSession\
+    .builder\
+    .appName("PythonWordCount")\
+    .getOrCreate()
+
+# Lecture d'un fichier texte : le fichier est décomposé en lignes
+lines = spark.read.text(sys.argv[1]).rdd.map(lambda r: r[0])
+
+# Décomposition de chaque ligne en mot (flatMap) pour associé à chaque mot une valeur (map)
+# qui sera ensuite sommée avec les valeurs du même mot (reduceByKey).
+word_counts = lines.flatMap(lambda line: line.split(' '))\
+                   .map(lambda word: (word, 1))\
+                   .reduceByKey(add)\
+                   .collect()
+
+# Chaque paire (clé, valeur) est affichée
+for (word, count) in word_counts:
+    print(word, count)
+```
+Voyons plus en détail les différents concepts Spark abordés dans ce code python:
+- SparkSession est le point d'entrée pour exécuter des manipulations avec Spark. Le driver contrôle l'application grâce à SparkSession.
+- **RDD ("Resilient Distributed Dataset)** est un structure de donnée fondamentale de Spark. Il s'agit d'une **collection d'éléments immuable et distribuée** des données, partionnée entre les différents noeud du cluster sur laquelle on peut appliquer des opérations de bas niveau telles que des transformations et des actions.
+- les **transformations** (flatMap, map et reduceByKey) permettent de créer une nouvelle RDD depuis une existante. Celles-ci sont évaluées de manière **paresseuse** ("lazy evaluation"), c'est à dire uniquement en cas de besoin.
+- les **actions** (collect) retournent une valeur après avoir effectuer un ensemble de calcul sur la RDD.
+Les transformations sont seulement effectuées lorsqu'une action est effectuée ce qui permet à Spark d'optimiser les calculs. 
+
+Pour tester ce code, nous avons un [fichier](./data/iliad100.txt) contenant l'ensemble des mots de l'[Iliade d'Homère](https://fr.wikipedia.org/wiki/Iliade) (concaténé 100 fois) qui servira comme source de données.\
+Pour exécuter le code, il suffit d'utiliser la commande suivante :
+```sh
+$ spark-submit code/wordcount.py data/iliad100.txt
+```
+Le résultat obtenu correspond aux mots associés au nombre de fois qu'ils ont été comptés.
+TODO: Image
+
+Les exemple suivants utiliseront un notebook Jupyter. \
+Ainsi, il est recommandé d'utiliser une environnement virtuel pour la suite du tutoriel. Pour cela, un outil intéressant est **virtualenv**, il permet de créer des environnements virtuels Python isolés en créant un dossier qui contient tous les exécutables nécessaires pour utiliser les paquets qu’un projet Python pourrait nécessiter.\
+Pour installer **virtualenv** via pip :
+```sh
+$ pip install virtualenv
+```
+Une fois virtualenv installé, il suffit de créer et d'accéder à l'environnement virtuel :
+```sh
+$ virtualenv venv
+$ source venv/bin/activate
+```
+Vous pouvez alors installer l'ensemble des librairies nécessaires pour la suite du tutoriel à savoir jupyter et findspark :
+```sh
+$ pip install jupyter
+$ pip install findspark
+```
+Plus tard, vous pourrez désactiver cet environnement virtuel :
+```sh
+$ deactivate
+```
+### Exemples 2 : Clustering
+
+Les exemple suivants utiliseront un notebook Jupyter
      
 
 

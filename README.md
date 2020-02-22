@@ -77,6 +77,77 @@ Le  modèle de base est capable de supporter la scalabilité ainsi que l’éche
 
 ## Tutoriel
 
+Ce tutoriel se divise en deux phases :\
+Dans la première phase, nous démonterons comment installer Spark et quelques cas d'utilisations en local pour comprendre son fonctionnement.\
+Dans un deuxième temps, nous montrerons comment utiliser le mode de déploiement autonome de Spark pour lancer un cluster de machines.
+
+### Installation de Spark
+
+Spark fonctionne sur les systèmes Windows et UNIX (Linux, Mac OS). L'ensemble des commandes présentés pour l'installation se feront sur une machine sous Ubuntu 18.04. 
+
+- S'assurer que la version 8 de Java est installé et que la variable JAVA_HOME est correctement configuré.
+Les commandes suivantes permettent cette vérification :
+```sh
+$ java -version
+openjdk version "1.8.0_242"
+OpenJDK Runtime Environment (build 1.8.0_242-8u242-b08-0ubuntu3~18.04-b08)
+OpenJDK 64-Bit Server VM (build 25.242-b08, mixed mode)
+
+$ echo $JAVA_HOME
+/usr/lib/jvm/java-8-openjdk-amd64
+```
+Remarque: Notez que l'affichage peut être différent en fonction du JDK installé mais il est important d'avoir la version 8.\
+Dans le cas où Java n'est pas installé et/ou la variable d'environnement n'est pas configuré, vous pouvez vous référer au tutoriel suivant : https://www3.ntu.edu.sg/home/ehchua/programming/howto/JDK_Howto.html
+
+- S'assurer qu'une version 3.4+ de python est installée (pour utiliser pyspark)
+```
+$ python --version
+Python 3.7.2
+```
+Dans le cas où python n'est pas installé, vous pouvez vous référer au tutoriel suivant : https://realpython.com/installing-python/
+
+- Installer spark
+    + Télécharger la version 2.4.5 de Spark préconfigurée pour Hadoop 2.7 via le terminal ou depuis le [site officiel de Spark](http://spark.apache.org/downloads.html).
+    ```sh
+    $ curl -O https://downloads.apache.org/spark/spark-2.4.5/spark-2.4.5-bin-hadoop2.7.tgz
+    ```
+    + Extraire le fichier et le placer dans un repertoire :
+    ```sh
+    $ tar xvf spark-2.4.5-bin-hadoop2.7.tgz
+    $ mv spark-2.4.5-bin-hadoop2.7 /opt/spark/
+    ```
+    + Configurer les variables d'environnement :
+        * Ouvrir le fichier de configuration du terminal
+        ```sh
+        $ vim ~/.bashrc
+        ```
+        * Ajouter la variable d'environnement SPARK_HOME et modifier la variable PATH dans ce fichier
+        ```
+        export SPARK_HOME=/opt/spark
+        export PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin
+        ```
+        * Activer les changements
+        ```sh
+        $ source ~/.bashrc
+        ```
+### Utilsation de Spark
+
+Les 3 exemples suivants permettront de comprendre le fonctionnement de Spark et voir quelques unes des fonctionnalités offertes.
+
+#### Exemple 1 : Wordcount
+
+Ce premier exemple permet de vérifier que l'installation s'est bien déroulée et de prendre connaissance des notions fondamentales de Spark.
+Il est directement fourni comme exemple dans l'arborescence de spark: $SPARK_HOME/examples/src/main/python/wordcount.py avec un ensemble d'autres exemples. Vous pouvez également le retrouver dans le dossier code de ce tutoriel.
+
+     
+
+
+
+
+
+
+
+
 
 
 

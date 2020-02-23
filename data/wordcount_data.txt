@@ -1,0 +1,6 @@
+Ce tutoriel a pour objectif de faire découvrir la technologie Spark
+Apache Spark est un framework open source de calcul distribué
+Spark est aujourd’hui un projet de la fondation Apache
+Spark est un cadre applicatif de traitements big data pour effectuer des analyses complexes à grande échelle
+Ce framework fournit plusieurs composants et librairies aux utilisateurs pour des traitements de données
+

@@ -158,6 +158,12 @@ Dans le cas où python n'est pas installé, vous pouvez vous référer au tutori
         ```sh
         $ source ~/.bashrc
         ```
+Remarque : Sur Windows, il est en plus nécessaire de :
+- Installer [winutils.exe](https://github.com/steveloughran/winutils)
+- Récupérer winutils.exe correspondant à la version 2.7.1 de Hadoop
+- Copier ce fichier dans **SPARK_HOME\hadoop\bin**
+- Configurer la varaible d'environnement HADOOP_HOME = %SPARK_HOME%\hadoop
+
 ### Utilsation de Spark
 
 Les 3 exemples suivants permettront de comprendre le fonctionnement de Spark et voir quelques unes des fonctionnalités offertes.
@@ -295,6 +301,36 @@ Les différentes étapes sont les suivantes :
 
 ![center](img/evaluation_classification.png)
 
+### Lancement d'un cluster Spark en utilisant le mode autonome ("standalone")
+
+On doit préalablement s'assurer que tous les noeuds du cluster ont [correctement installé Spark](#installation-de-spark).\
+On peut ensuite lancer le noeud maître en exécutant la commande :
+```sh
+$ start-master.sh
+```
+On peut vérifié qu'il a bien été lancé en accédant à l'interface utilisateur de Spark disponible depuis l'URL : http://localhost:8080
+![center](img/sparkui_master.png)
+On peut ensuite lancer les noeuds Worker en précisant l'URL du noeud maître qu'on peut observer depuis l'interface utilisateur de ce dernier :
+```sh
+$ start-slave.sh spark://<master_IP>:<port>
+```
+On peut voir qu'il a bien été ajouté via l'interface utilisateur du maitre : 
+![center](img/sparkui_slave.png)
+Sur Windows, les commandes pour lancer les noeuds maitre et Worker sont un peu différentes :
+```sh
+$ spark-class org.apache.spark.deploy.master.Master
+$ spark-class org.apache.spark.deploy.worker.Worker spark://<master_IP>:<port>
+```
+Pour lancer une application sur le cluster, il suffit ensuite d'utiliser la commande suivante :
+```sh
+$ spark-submit --master spark://<master_IP>:<port> <application>
+```
+Vous pouvez par example essayer cette commande avec l'application Wordcount :
+```sh
+spark-submit --master spark://<master_IP>:<port> code/wordcount.py data/wordcount_data.txt 
+```
+Vous devriez observer une application complétée depuis l'interface utilisateur du maitre.
+![center](img/sparkui_wordcount.png)
 
 ## Auteurs
 Quentin LETORT - LETQ12039703\

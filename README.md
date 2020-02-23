@@ -5,6 +5,29 @@
 Ce tutoriel a pour objectif de faire découvrir la technologie [Spark](https://spark.apache.org/).\
 Il s'inscrit dans le cadre du cours [8INF853 - Architecture des applications d'entreprise](https://cours.uqac.ca/8INF853) dispensé par Fabio Petrillo pour le programme de [Maîtrise en informatique](https://www.uqac.ca/programme/3037-maitrise-en-informatique/) à l'UQAC.  
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Sommaire**
+
+- [Présentation de Spark](#pr%C3%A9sentation-de-spark)
+  - [Contexte](#contexte)
+  - [Historique](#historique)
+  - [Philosophie](#philosophie)
+    - [Plateforme unifié](#plateforme-unifi%C3%A9)
+    - [Moteur de calcul](#moteur-de-calcul)
+    - [Librairies](#librairies)
+  - [Architecture](#architecture)
+- [Tutoriel](#tutoriel)
+  - [Installation de Spark](#installation-de-spark)
+  - [Utilsation de Spark](#utilsation-de-spark)
+    - [Exemple 1 : Wordcount](#exemple-1--wordcount)
+  - [Exemples 2 : Clustering](#exemples-2--clustering)
+  - [Exemple 3 : Classification](#exemple-3--classification)
+- [Auteurs](#auteurs)
+- [Références](#r%C3%A9f%C3%A9rences)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 ## Présentation de Spark
 
 Apache Spark est un **framework open source** de **calcul distribué**.\

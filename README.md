@@ -310,13 +310,17 @@ On peut ensuite lancer le noeud maître en exécutant la commande :
 $ start-master.sh
 ```
 On peut vérifié qu'il a bien été lancé en accédant à l'interface utilisateur de Spark disponible depuis l'URL : http://localhost:8080
+
 ![center](img/sparkui_master.png)
+
 On peut ensuite lancer les noeuds Worker en précisant l'URL du noeud maître qu'on peut observer depuis l'interface utilisateur de ce dernier :
 ```sh
 $ start-slave.sh spark://<master_IP>:<port>
 ```
 On peut voir qu'il a bien été ajouté via l'interface utilisateur du maitre : 
+
 ![center](img/sparkui_slave.png)
+
 Sur Windows, les commandes pour lancer les noeuds maitre et Worker sont un peu différentes :
 ```sh
 $ spark-class org.apache.spark.deploy.master.Master
@@ -331,6 +335,7 @@ Vous pouvez par example essayer cette commande avec l'application Wordcount :
 spark-submit --master spark://<master_IP>:<port> code/wordcount.py data/wordcount_data.txt 
 ```
 Vous devriez observer une application complétée depuis l'interface utilisateur du maitre.
+
 ![center](img/sparkui_wordcount.png)
 
 ## Auteurs

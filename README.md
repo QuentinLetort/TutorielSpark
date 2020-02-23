@@ -332,7 +332,7 @@ $ spark-submit --master spark://<master_IP>:<port> <application>
 ```
 Vous pouvez par example essayer cette commande avec l'application Wordcount :
 ```sh
-spark-submit --master spark://<master_IP>:<port> code/wordcount.py data/wordcount_data.txt 
+$ spark-submit --master spark://<master_IP>:<port> code/wordcount.py data/wordcount_data.txt 
 ```
 Vous devriez observer une application complétée depuis l'interface utilisateur du maitre.
 

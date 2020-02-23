@@ -23,6 +23,7 @@ Il s'inscrit dans le cadre du cours [8INF853 - Architecture des applications d'e
     - [Exemple 1 : Wordcount](#exemple-1--wordcount)
     - [Exemples 2 : Clustering](#exemples-2--clustering)
     - [Exemple 3 : Classification](#exemple-3--classification)
+  - [Lancement d'un cluster Spark en utilisant le mode autonome ("standalone")](#lancement-dun-cluster-spark-en-utilisant-le-mode-autonome-standalone)
 - [Auteurs](#auteurs)
 - [Références](#r%C3%A9f%C3%A9rences)
 

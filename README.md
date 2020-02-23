@@ -195,9 +195,12 @@ Une fois virtualenv installé, il suffit de créer et d'accéder à l'environnem
 $ virtualenv venv
 $ source venv/bin/activate
 ```
-Vous pouvez alors installer l'ensemble des librairies nécessaires pour la suite du tutoriel à savoir jupyter et findspark :
+Vous pouvez alors installer l'ensemble des librairies nécessaires pour la suite du tutoriel :
 ```sh
 $ pip install jupyter
+$ pip install numpy
+$ pip install matplotlib
+$ pip install pandas
 $ pip install findspark
 ```
 Plus tard, vous pourrez désactiver cet environnement virtuel :
@@ -206,11 +209,32 @@ $ deactivate
 ```
 ### Exemples 2 : Clustering
 
-Les exemple suivants utiliseront un notebook Jupyter
-     
+Dans cet exemple, nous appliquerons un modèle de clustering (K-means) sur des données de log.
+Cet exemple est un notebook Jupyter, il suffit donc d'exécuter la commande :
+```sh
+$ jupyter notebook code/Spark_Clustering_Kmeans.ipynb
+```
+Les différentes étapes sont les suivantes :
+- Acquisition des données depuis un serveur SQL et création de la DataFrame :
+- Ajout d’un identifiant unique et division de la Dataframe (échantillons d'entraînement et de test) :
+- Création de la pipeline de transformation des données :
+- Entraînement du modèle et agrégation des résultats :
+- Joint entre la table initiale et la table de résultat pour afficher tous les champs et affichage des différents clusters trouvés :
+- Affichage des résultats :
 
+### Exemple 3 : Classification
 
-
+Dans cet exemple, nous appliquerons un modèle de classification (Régression logistique) sur des données de log.
+Cet exemple est un notebook Jupyter, il suffit donc d'exécuter la commande :
+```sh
+$ jupyter notebook code/Spark_Classification_Logistic_Regression.ipynb
+```
+Les différentes étapes sont les suivantes :
+- Acquisition des données depuis un serveur SQL et création de la DataFrame :
+- Requête SQL pour obtenir les données désirées :
+- Création de la pipeline de transformation des données :
+- Configuration des paramètres et entraînement du modèle :
+- Evaluation du modèle et affichage des résultats :
 
 
 

@@ -21,8 +21,8 @@ Il s'inscrit dans le cadre du cours [8INF853 - Architecture des applications d'e
   - [Installation de Spark](#installation-de-spark)
   - [Utilsation de Spark](#utilsation-de-spark)
     - [Exemple 1 : Wordcount](#exemple-1--wordcount)
-  - [Exemples 2 : Clustering](#exemples-2--clustering)
-  - [Exemple 3 : Classification](#exemple-3--classification)
+    - [Exemples 2 : Clustering](#exemples-2--clustering)
+    - [Exemple 3 : Classification](#exemple-3--classification)
 - [Auteurs](#auteurs)
 - [Références](#r%C3%A9f%C3%A9rences)
 
@@ -234,7 +234,7 @@ Plus tard, vous pourrez désactiver cet environnement virtuel :
 ```sh
 $ deactivate
 ```
-### Exemples 2 : Clustering
+#### Exemples 2 : Clustering
 
 Dans cet exemple, nous appliquerons un modèle de clustering (K-means) sur des données de log.
 Cet exemple est un notebook Jupyter, il suffit donc d'exécuter la commande :
@@ -267,7 +267,7 @@ Les différentes étapes sont les suivantes :
 ![center](img/matplot_clustering.png)
 ![center](img/graphics_clustering.png)
 
-### Exemple 3 : Classification
+#### Exemple 3 : Classification
 
 Dans cet exemple, nous appliquerons un modèle de classification (Régression logistique) sur des données de log.
 Cet exemple est un notebook Jupyter, il suffit donc d'exécuter la commande :

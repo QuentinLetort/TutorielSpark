@@ -1,5 +1,7 @@
 # Tutoriel d'une technologie émergente : Spark
 
+![center](img/Apache_Spark_Logo.png)
+
 Ce tutoriel a pour objectif de faire découvrir la technologie [Spark](https://spark.apache.org/).\
 Il s'inscrit dans le cadre du cours [8INF853 - Architecture des applications d'entreprise](https://cours.uqac.ca/8INF853) dispensé par Fabio Petrillo pour le programme de [Maîtrise en informatique](https://www.uqac.ca/programme/3037-maitrise-en-informatique/) à l'UQAC.  
 
@@ -10,8 +12,7 @@ Développé à l’université de Californie à Berkeley en 2014, Spark est aujo
 Il s'agit essentiellement d'un cadre applicatif de traitements **big data** pour effectuer des analyses complexes à grande échelle.\
 Spark permet d’optimiser l’utilisation d’un **cluster** pour des opérations d'analyses et permet ainsi de minimiser le temps requis pour obtenir les résultats.\
 Ce framework fournit plusieurs composants et librairies aux utilisateurs pour le traitement de données :
-TODO: Image
-
+![center](img/components.jpg)
 
 ### Contexte
 
@@ -66,6 +67,8 @@ L’architecture de Spark est bien sûr de type distribué, il contrôle et coor
 - un noeud **driver** qui est chargé d'analyser,distribuer et programmer les tâches sur les différents **exécuteurs**. Il exécute la fonction **main()** du programme et constitue ainsi la pièce centrale de l'application.
 - un ou plusieurs noeuds **workers** avec chacun un **exécuteur** qui est chargé d'exécuter les tâches confiées par le driver et retourner l'état du calcul au **driver**
 - un **cluster manager** qui est chargé d'instancier les **workers** 
+
+![center](img/architecture_spark.png)
 
 Une application Spark peut utilisée différents types de **cluster managers** :
 - [Mode autonome de Spark](https://spark.apache.org/docs/latest/spark-standalone.html) ("standalone")
@@ -176,13 +179,14 @@ Voyons plus en détail les différents concepts Spark abordés dans ce code pyth
 - les **actions** (collect) retournent une valeur après avoir effectuer un ensemble de calcul sur la RDD.
 Les transformations sont seulement effectuées lorsqu'une action est effectuée ce qui permet à Spark d'optimiser les calculs. 
 
-Pour tester ce code, nous avons un [fichier](./data/iliad100.txt) contenant l'ensemble des mots de l'[Iliade d'Homère](https://fr.wikipedia.org/wiki/Iliade) (concaténé 100 fois) qui servira comme source de données.\
+Pour tester ce code, nous allons utiliser wordcount_data.txt comme source de données.\
 Pour exécuter le code, il suffit d'utiliser la commande suivante :
 ```sh
-$ spark-submit code/wordcount.py data/iliad100.txt
+$ spark-submit code/wordcount.py data/wordcount_data.txt
 ```
 Le résultat obtenu correspond aux mots associés au nombre de fois qu'ils ont été comptés.
-TODO: Image
+
+![center](img/result_wordcount.png)
 
 Les exemple suivants utiliseront un notebook Jupyter. \
 Ainsi, il est recommandé d'utiliser une environnement virtuel pour la suite du tutoriel. Pour cela, un outil intéressant est **virtualenv**, il permet de créer des environnements virtuels Python isolés en créant un dossier qui contient tous les exécutables nécessaires pour utiliser les paquets qu’un projet Python pourrait nécessiter.\
@@ -216,11 +220,29 @@ $ jupyter notebook code/Spark_Clustering_Kmeans.ipynb
 ```
 Les différentes étapes sont les suivantes :
 - Acquisition des données depuis un serveur SQL et création de la DataFrame :
+
+![center](img/sql_to_df_clustering.png)
+
 - Ajout d’un identifiant unique et division de la Dataframe (échantillons d'entraînement et de test) :
+
+![center](img/split_clustering.png)
+
 - Création de la pipeline de transformation des données :
+
+![center](img/pipeline_clustering.png)
+
 - Entraînement du modèle et agrégation des résultats :
-- Joint entre la table initiale et la table de résultat pour afficher tous les champs et affichage des différents clusters trouvés :
+
+![center](img/train_clustering.png)
+
+- Jointure entre la table initiale et la table de résultat pour afficher tous les champs et affichage des différents clusters trouvés :
+
+![center](img/result_clustering.png)
+
 - Affichage des résultats :
+
+![center](img/matplot_clustering.png)
+![center](img/graphics_clustering.png)
 
 ### Exemple 3 : Classification
 
@@ -231,16 +253,24 @@ $ jupyter notebook code/Spark_Classification_Logistic_Regression.ipynb
 ```
 Les différentes étapes sont les suivantes :
 - Acquisition des données depuis un serveur SQL et création de la DataFrame :
+
+![center](img/sql_to_df_classification.png)
+
 - Requête SQL pour obtenir les données désirées :
+
+![center](img/requete_classification.png)
+
 - Création de la pipeline de transformation des données :
+
+![center](img/pipeline_classification.png)
+
 - Configuration des paramètres et entraînement du modèle :
+
+![center](img/train_classification.png)
+
 - Evaluation du modèle et affichage des résultats :
 
-
-
-
-
-
+![center](img/evaluation_classification.png)
 
 
 ## Auteurs
